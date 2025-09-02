@@ -1,0 +1,18 @@
+[package]
+name = "lscmd"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "lscmd"
+path = "src/main.rs"
+
+[dependencies]
+lscmd-core = { path = "../core" }
+clap.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+crossterm.workspace = true
+owo-colors.workspace = true
+dirs = "5.0"
