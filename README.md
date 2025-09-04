@@ -12,19 +12,50 @@ A Rust-based shell command listing tool for scanning and displaying `alias` and 
 
 ## Installation
 
-### Build from Source
+### Homebrew (Recommended)
+
+```bash
+brew install monshakeys/tap/lscmd
+```
+
+### Alternative Methods
+
+If you prefer not to use Homebrew, you can install using one of these methods:
+
+#### Build from Source
 
 ```bash
 # Clone the repository
 git clone <repo-url>
 cd lscmd
 
-# Build
-cargo build --release
+# For development - fast compilation
+cargo build
+./target/debug/lscmd
 
-# Run
+# For production - optimized performance
+cargo build --release
 ./target/release/lscmd
+
+# Or run directly without building executable
+cargo run              # debug mode
+cargo run --release    # release mode
+
+# Install to system (optional)
+cargo install --path .
 ```
+
+#### Using Cargo
+
+If you have Rust installed:
+
+```bash
+cargo install --git <repo-url>
+```
+
+#### Download Binary
+
+Download the latest binary from the [releases page](https://github.com/monshakeys/lscmd/releases) and place it in your `$PATH`.
 
 ## Usage
 
@@ -105,7 +136,25 @@ lscmd/
   - `crossterm` - Cross-platform terminal control
   - `walkdir` - Recursive directory traversal
 
-## Testing
+## Development
+
+### Building and Running
+
+```bash
+# Development build (fast compilation, includes debug info)
+cargo build
+./target/debug/lscmd
+
+# Release build (optimized, smaller binary)
+cargo build --release
+./target/release/lscmd
+
+# Run without building (convenient for development)
+cargo run -- --help              # debug mode with arguments
+cargo run --release -- /path     # release mode with arguments
+```
+
+### Testing
 
 ```bash
 # Run unit tests
@@ -113,5 +162,8 @@ cargo test
 
 # Run specific tests
 cargo test parser::tests
+
+# Run tests with output
+cargo test -- --nocapture
 ```
 
