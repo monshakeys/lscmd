@@ -6,12 +6,12 @@ use crossterm::terminal;
 use std::path::PathBuf;
 
 #[derive(Parser)]
-#[command(name = "lscmd", version, about = "列出 Shell 命令 (別名與函式)")]
+#[command(name = "lscmd", version, about = "List shell commands (aliases and functions)")]
 struct Cli {
-    #[arg(help = "要掃描的根目錄 (預設: ~/.alias/)")]
+    #[arg(help = "Root directory to scan (default: ~/.alias/)")]
     path: Option<PathBuf>,
     
-    #[arg(short, long, default_value_t = 5, help = "顯示欄位數")]
+    #[arg(short, long, default_value_t = 5, help = "Number of columns to display")]
     columns: usize,
 }
 
@@ -31,7 +31,7 @@ fn main() -> Result<()> {
             display_commands(&file_commands, cli.columns);
         }
         Err(e) => {
-            eprintln!("{}: {}", "lscmd 錯誤".red(), e);
+            eprintln!("{}: {}", "lscmd error".red(), e);
             std::process::exit(1);
         }
     }

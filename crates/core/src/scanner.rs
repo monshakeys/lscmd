@@ -6,7 +6,7 @@ pub fn scan_directory<P: AsRef<Path>>(root_path: P) -> Result<Vec<PathBuf>> {
     let root = root_path.as_ref();
     
     if !root.exists() {
-        return Err(anyhow::anyhow!("目錄 '{}' 不存在。", root.display()));
+        return Err(anyhow::anyhow!("Directory '{}' does not exist.", root.display()));
     }
 
     let mut shell_files = Vec::new();
@@ -29,7 +29,7 @@ pub fn scan_directory<P: AsRef<Path>>(root_path: P) -> Result<Vec<PathBuf>> {
     shell_files.sort();
 
     if shell_files.is_empty() {
-        return Err(anyhow::anyhow!("在 '{}' 中找不到任何 .sh 檔案。", root.display()));
+        return Err(anyhow::anyhow!("No .sh files found in '{}'.", root.display()));
     }
 
     Ok(shell_files)
