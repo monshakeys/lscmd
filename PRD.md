@@ -90,8 +90,8 @@ Commands:
                 WARNING: Changing path will trigger full rescan
     
     # Query Commands (TUI Interface)
-    list        List all commands (opens TUI interface)
-    search      Search commands by name/pattern (opens TUI interface)
+    list        List all commands (opens TUI interface with case-insensitive filtering)
+    search      Search commands by name/pattern (opens TUI interface with fixed case-insensitive matching)
     
     # Command Line Query
     show        Show specific command details
@@ -155,6 +155,7 @@ src/
 - Support for 1000+ aliases/functions without performance degradation
 - Zero data loss during incremental updates
 - Intuitive TUI navigation with keyboard shortcuts
+- Memory-efficient operation (< 50MB peak memory usage for typical workloads)
 
 ### Database Location Strategy
 Following XDG Base Directory Specification and industry best practices:
@@ -182,8 +183,7 @@ Following XDG Base Directory Specification and industry best practices:
 - Use prepared statements for all database operations
 - Implement proper SQL escaping for shell command content
 - Handle edge cases like nested quotes and escaped characters
-- Support both zsh and bash syntax variations
 - Maintain backward compatibility with existing .alias structure
-- Use case-insensitive matching by default for searches
+- **Fixed Behavior**: Use case-insensitive matching for ALL searches (this is a fixed, non-configurable system behavior)
 - Use Aho-Corasick to scan for multiple parsing patterns (`alias `, `function `, `name()`) in single pass
 - Fall back to regex for detailed extraction after Aho-Corasick identifies candidate lines

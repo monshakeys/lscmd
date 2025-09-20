@@ -4,11 +4,20 @@ A Rust-based shell command listing tool for scanning and displaying `alias` and 
 
 ## Features
 
-- 🔍 **Auto Scanning**: Recursively scans all `.sh` files in specified directory
-- 🎨 **Color Output**: File names (orange uppercase bold), aliases (green), functions (blue) with distinct colors
-- 📊 **Multi-Column Layout**: Auto-adapts to terminal width with default 5-column layout
-- 🔤 **Smart Sorting**: Files sorted alphabetically, commands sorted by name
-- ⚡ **High Performance**: Built with Rust for fast processing of large file sets
+- 🧠 **Instant Command Recall**: Never forget the aliases and functions you've written
+  > *"Dauthen, a DevOps engineer, had accumulated 150+ custom shell shortcuts over 3 years. She often found herself rewriting commands she knew she'd created before, wasting precious time. With lscmd, she instantly recalls any command with a simple search."*
+
+- ⚡ **Lightning Search**: Find any command in milliseconds, no matter how many you have
+  > *"When Dauthen needed that Docker cleanup function she wrote months ago, instead of grep-ing through dozens of files for 15 minutes, she simply typed 'docker clean' and found it instantly."*
+
+- 🔍 **Fuzzy Memory Recovery**: Can't remember the exact name? No problem - partial matches work perfectly
+  > *"Dauthen vaguely remembered writing something about 'git branch cleanup' but couldn't recall if it was called 'cleanup', 'clean', or 'prune'. Fuzzy search found it immediately with just 'git clean'."*
+
+- 🚀 **Zero Maintenance**: Automatically discovers and syncs changes without any manual work
+  > *"Dauthen creates new aliases weekly. The tool automatically detects when she adds new commands or modifies existing ones, keeping everything perfectly synchronized without her lifting a finger."*
+
+- 🎯 **Smart Discovery**: Uncover forgotten gems in your command collection
+  > *"Dauthen spent 2 hours debugging a complex deployment script, only to discover she had already written the perfect solution 6 months ago but completely forgot about it. The deadline pressure and repeated work could have been avoided if she knew what tools she already possessed."*
 
 ## Installation
 
