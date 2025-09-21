@@ -3,4 +3,7 @@ pub mod config;
 pub mod database;
 pub mod error;
 pub mod parser;
+pub mod search;
+pub mod security;
+pub mod tui;
 pub mod utils;

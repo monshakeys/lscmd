@@ -93,7 +93,8 @@ pub struct Config {
 
 impl Config {
     /// Loads the configuration from the file specified by XDG paths.
-    /// If the file doesn't exist, it creates a default configuration.
+    /// If the file doesn't exist, it returns a default configuration instance
+    /// in memory without saving it.
     pub fn load() -> Result<Self> {
         let xdg_paths = XdgPaths::new()?;
         let config_path = xdg_paths.config_file_path()?;
@@ -104,14 +105,12 @@ impl Config {
             // TODO: Implement version migration logic here
             Ok(config)
         } else {
-            // Create a default configuration
+            // Return a default configuration in memory
             let home_dir = dirs::home_dir().ok_or_else(|| LscmdError::XdgError("Home directory not found".to_string()))?;
-            let default_config = Config {
+            Ok(Config {
                 alias_path: home_dir.join(".aliases"), // Default path
                 version: env!("CARGO_PKG_VERSION").to_string(),
-            };
-            default_config.save()?;
-            Ok(default_config)
+            })
         }
     }
 

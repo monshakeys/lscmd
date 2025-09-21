@@ -31,8 +31,8 @@ pub enum LscmdError {
     Validation(String),
 }
 
-impl From<sqlx::Error> for LscmdError {
-    fn from(err: sqlx::Error) -> Self {
+impl From<rusqlite::Error> for LscmdError {
+    fn from(err: rusqlite::Error) -> Self {
         LscmdError::Database(err.to_string())
     }
 }

@@ -2,17 +2,41 @@ pub mod operations;
 pub mod schema;
 
 use crate::error::{LscmdError, Result};
+use rusqlite::Connection;
 use serde::{Deserialize, Serialize};
-use sqlx::FromRow;
+use std::path::Path;
+
+/// Initializes the database connection and ensures the schema is up to date.
+///
+/// This function connects to the SQLite database at the given path, creating the
+/// file if it doesn't exist. It then executes the schema script to create
+/// tables and indexes if they are not already present.
+///
+/// # Arguments
+///
+/// * `db_path` - The path to the SQLite database file.
+///
+/// # Errors
+///
+/// Returns `LscmdError::Database` if the connection fails or the schema
+/// cannot be executed.
+pub fn init_db(db_path: &Path) -> Result<Connection> {
+    let conn = Connection::open(db_path)
+        .map_err(|e| LscmdError::Database(e.to_string()))?;
+
+    conn.execute_batch(schema::get_schema())
+        .map_err(|e| LscmdError::Database(e.to_string()))?;
+
+    Ok(conn)
+}
 
 /// Represents a command (alias or function) found in a shell script.
 /// This struct is mapped directly to the `commands` table in the database.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, FromRow)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Command {
     /// The name of the alias or function (PRIMARY KEY).
     pub name: String,
     /// The type of the command, either 'alias' or 'function'.
-    #[sqlx(rename = "type")]
     pub cmd_type: String,
     /// The absolute path to the file where the command is defined.
     pub path: String,

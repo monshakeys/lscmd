@@ -8,7 +8,7 @@ edition = "2021"
 clap = { version = "4.0", features = ["derive"] }
 
 # Database (strict sync mode)
-sqlx = { version = "0.8.6", default-features = false, features = ["runtime-tokio-rustls", "sqlite", "chrono", "macros"] }
+rusqlite = { version = "0.29", features = ["bundled"] }
 
 # Parallel processing
 rayon = "1.7"
