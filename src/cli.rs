@@ -12,6 +12,8 @@ pub struct Cli {
 
 #[derive(Subcommand)]
 pub enum Commands {
+    /// Show help message
+    Help,
     
     /// Full rescan - clear database and rebuild from all .alias files
     Scan,

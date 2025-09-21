@@ -1,19 +1,18 @@
-mod cli;
-mod error;
-mod config;
-mod database;
-mod parser;
-mod tui;
-mod utils;
-
+use lscmd::cli::{Cli, Commands};
+use lscmd::error::Result;
 use clap::Parser;
-use cli::{Cli, Commands};
-use error::Result;
+
+mod tui; // TUI is not part of the library yet
 
 fn main() -> Result<()> {
     let cli = Cli::parse();
 
     match cli.command {
+        Commands::Help => {
+            // Clap handles help, but we might want a custom one.
+            // For now, let's rely on clap's default.
+            println!("Use 'lscmd --help' for more information.");
+        },
         Commands::Scan => {
             println!("Full scan - TODO: implement in Phase 4");
         },
@@ -39,23 +38,4 @@ fn main() -> Result<()> {
     }
 
     Ok(())
-}
-
-fn print_help() {
-    println!("lscmd - High-performance CLI tool for shell aliases and functions");
-    println!();
-    println!("USAGE:");
-    println!("    lscmd [COMMAND]");
-    println!();
-    println!("COMMANDS:");
-    println!("    help        Show this help message");
-    println!("    scan        Full rescan - clear database and rebuild from all .alias files");
-    println!("    update      Incremental update - only reparse modified files");
-    println!("    path <PATH> Change alias directory path (WARNING: triggers full rescan)");
-    println!("    list        List all commands (opens TUI interface)");
-    println!("    search      Search commands by name/pattern (opens TUI interface)");
-    println!("    show        Show specific command details");
-    println!("    init        Initialize lscmd with interactive setup");
-    println!();
-    println!("For more information on a specific command, use: lscmd <command> --help");
 }
