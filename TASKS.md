@@ -15,35 +15,35 @@
 ## Phase 0: 專案初始化與核心架構 (Project Initialization)
 
 ### 0.1 Cargo 專案建立
-- [ ] 執行 `cargo init .` 初始化專案
-- [ ] 在 Cargo.toml 中設定 name = "lscmd"
-- [ ] 建立單一專案結構 (不使用 workspace，按 PRD.md 檔案結構)
-- [ ] 測試第一次 `cargo build` 成功
+- [x] 執行 `cargo init .` 初始化專案
+- [x] 在 Cargo.toml 中設定 name = "lscmd"
+- [x] 建立單一專案結構 (不使用 workspace，按 PRD.md 檔案結構)
+- [x] 測試第一次 `cargo build` 成功
 
 ### 0.2 基礎依賴設定 (按 PRD.md 技術棧)
-- [ ] CLI 框架：`clap` (derive 模式)
-- [ ] 資料庫：`sqlx` + sqlite (**嚴格同步模式，禁用 async/await**)
-- [ ] 並行處理：`rayon` (CPU 密集型解析)
-- [ ] 解析：`regex` + `aho-corasick`
-- [ ] 檔案操作：`walkdir`
-- [ ] 終端：`crossterm` + `colored`
-- [ ] TUI：`ratatui` (Phase 6 實現)
-- [ ] 錯誤處理：`anyhow` + `thiserror`
-- [ ] 目錄：`dirs` (XDG 支援)
-- [ ] 設定檔：`serde` + `serde_json`
+- [x] CLI 框架：`clap` (derive 模式)
+- [x] 資料庫：`sqlx` + sqlite (**嚴格同步模式，禁用 async/await**)
+- [x] 並行處理：`rayon` (CPU 密集型解析)
+- [x] 解析：`regex` + `aho-corasick`
+- [x] 檔案操作：`walkdir`
+- [x] 終端：`crossterm` + `colored`
+- [x] TUI：`ratatui` (Phase 6 實現)
+- [x] 錯誤處理：`anyhow` + `thiserror`
+- [x] 目錄：`dirs` (XDG 支援)
+- [x] 設定檔：`serde` + `serde_json`
 
 ### 0.3 專案結構建立與錯誤處理架構 (按 PRD.md 檔案結構)
-- [ ] 建立 `src/main.rs` - CLI 入口點和命令處理器
-- [ ] 建立 `src/cli.rs` - Clap 命令定義
-- [ ] 建立 `src/error.rs` - **🔥 核心錯誤處理架構** (前置設計)
-- [ ] 建立 `src/parser.rs` - Shell 腳本解析邏輯
-- [ ] 建立 `src/database/mod.rs` - 資料庫模組
-- [ ] 建立 `src/database/schema.rs` - 資料庫 schema 和遷移
-- [ ] 建立 `src/database/operations.rs` - CRUD 操作
-- [ ] 建立 `src/config/mod.rs` - **🔥 XDG跨平台配置管理**
-- [ ] 建立 `src/utils/mod.rs` - 工具模組
-- [ ] 建立 `src/utils/file_scanner.rs` - 檔案發現和監控
-- [ ] 建立 `src/utils/parallel.rs` - 並行處理工具
+- [x] 建立 `src/main.rs` - CLI 入口點和命令處理器
+- [x] 建立 `src/cli.rs` - Clap 命令定義
+- [x] 建立 `src/error.rs` - **🔥 核心錯誤處理架構** (前置設計)
+- [x] 建立 `src/parser.rs` - Shell 腳本解析邏輯
+- [x] 建立 `src/database/mod.rs` - 資料庫模組
+- [x] 建立 `src/database/schema.rs` - 資料庫 schema 和遷移
+- [x] 建立 `src/database/operations.rs` - CRUD 操作
+- [x] 建立 `src/config/mod.rs` - **🔥 XDG跨平台配置管理**
+- [x] 建立 `src/utils/mod.rs` - 工具模組
+- [x] 建立 `src/utils/file_scanner.rs` - 檔案發現和監控
+- [x] 建立 `src/utils/parallel.rs` - 並行處理工具
 
 ---
 

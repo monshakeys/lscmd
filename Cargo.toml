@@ -1,0 +1,39 @@
+[package]
+name = "lscmd"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# CLI framework
+clap = { version = "4.0", features = ["derive"] }
+
+# Database (strict sync mode)
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "sqlite", "chrono"] }
+
+# Parallel processing
+rayon = "1.7"
+
+# Parsing
+regex = "1.9"
+aho-corasick = "1.0"
+
+# File operations
+walkdir = "2.3"
+
+# Terminal
+crossterm = "0.27"
+colored = "2.0"
+
+# TUI (for Phase 6)
+ratatui = "0.23"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Directories (XDG support)
+dirs = "5.0"
+
+# Configuration
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
